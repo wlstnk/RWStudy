@@ -4,53 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="Hanoi.js"></script>
     <title>Document</title>
 </head>
 <body>
     <p>하노이의 탑</p>
 
-    <div><button>초기화</button></div>
+    <form id="form_box"method="get" action="form-action.html">
+        <input id="btn_reset" type="button" value="초기화" onclick="OnClickBtn_Init();">
+    </form>
 
-    <div  style="
-    width:180px;
-    height:300px; 
-    float:left; 
-    margin:20px; 
-    border: solid red; 
-    border-width:1px; 
-    text-align: center;
-    font-size: 2px;
-    line-height: 10em;
-    padding: 5px">
-        <p>🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥</p>
-        <p>🟨🟨🟨🟨🟨🟨🟨🟨🟨</p>
-        <p>🟩🟩🟩🟩🟩🟩🟩</p>
-        <p>🟦🟦🟦🟦🟦</p>
-        <p>🟪🟪🟪</p>
-        <p>⬛</p>
+    <div class="parent">
+        <div class ="first">
+            first
+        </div>
+        
+        <div class ="second">
+            second
+        </div>
+
+        <div class ="third">
+            third
+        </div>
     </div>
+
+
     
-    <div style="
-    width:180px; 
-    height:300px; 
-    float:left; 
-    margin:20px; 
-    border: solid green; 
-    border-width:1px;
-    text-align: center;
-    font-size: 2px;">
-        second
-    </div>
-
-    <div style="
-    width:180px; 
-    height:300px; 
-    float:left; 
-    margin:20px; 
-    border: solid blue; 
-    border-width:1px;
-    text-align: center;">
-    </div>
     
 </body>
 </html>
