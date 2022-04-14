@@ -12,19 +12,19 @@
     <p>하노이의 탑</p>
 
     <form id="form_box"method="get" action="form-action.html">
-        <input id="btn_reset" type="button" value="초기화" onclick="OnClickBtn_Init();">
+        <input id="btn_reset" type="button" value="초기화" onclick="Init();"  >
     </form>
 
     <div class="parent">
-        <div class ="first">
+        <div class ="first" onclick="OnClickFirst(firstArr,1);">
             first
         </div>
         
-        <div class ="second">
+        <div class ="second" onclick="OnClickFirst(secondArr,2);">
             second
         </div>
 
-        <div class ="third">
+        <div class ="third" onclick="OnClickFirst(thirdArr,3);">
             third
         </div>
     </div>
