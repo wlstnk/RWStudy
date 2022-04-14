@@ -10,11 +10,22 @@ var bisInit = false;
 function OnClickFirst(Arr,Position)
 {
     console.log(savePosition,Position);
-    if(bisSaved)
+    if(save)
     {
-        Arr.push(save);
-        DrawScreen();
-        bisSaved = false;
+        if(Arr[Arr.length - 1] < save)
+        {
+            alert("더 작은 원반 위에 큰 원반을 올릴 수 없습니다.");
+            savePosition.push(save);
+            DrawScreen();
+            save = null;
+
+        }
+        else
+        {
+            Arr.push(save);
+            DrawScreen();
+            save = null;
+        }
     }
     else if(bisInit==false)
     {
@@ -22,8 +33,7 @@ function OnClickFirst(Arr,Position)
     }
     else
     {
-        savePosition = Position;
-        bisSaved=true;
+        savePosition = Arr;
         save=Arr.pop();
         DrawScreen();
     }
@@ -39,12 +49,12 @@ function OnClickFirst(Arr,Position)
     firstArr = [];
     secondArr = [];
     thirdArr = [];
-    firstArr.push("<p>🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥</p>");
-    firstArr.push("<p>🟨🟨🟨🟨🟨🟨🟨🟨🟨</p>");
-    firstArr.push("<p>🟩🟩🟩🟩🟩🟩🟩</p>");
-    firstArr.push("<p>🟦🟦🟦🟦🟦</p>");
-    firstArr.push("<p>🟪🟪🟪</p>");
-    firstArr.push("<p>⬛</p>");
+    firstArr.push(6);
+    firstArr.push(5);
+    firstArr.push(4);
+    firstArr.push(3);
+    firstArr.push(2);
+    firstArr.push(1);
 
     const element = document.querySelector(".first");
     DrawScreen();
@@ -56,25 +66,37 @@ function OnClickFirst(Arr,Position)
     const secondElement = document.querySelector(".second");
     const thirdElement = document.querySelector(".third");
 
-    // firstElement.innerHTML="first";
-    // firstArr.forEach(function(i){
-    //     firstElement.innerHTML += i;
-    // });
-    
-    firstArr.sort((x,y)=>x.length-y.length);
-    secondElement.innerHTML="first";
-    secondArr.forEach(function(i){
-        secondElement.innerHTML += i;
+    firstElement.innerHTML="first";
+    firstArr.forEach(function(i){
+        firstElement.innerHTML += FindMatchInnerHTML(i);
     });
-
 
     secondElement.innerHTML="second";
     secondArr.forEach(function(i){
-        secondElement.innerHTML += i;
+        secondElement.innerHTML += FindMatchInnerHTML(i);
     });
 
-    thirdElement.innerHTML="second";
+    thirdElement.innerHTML="third";
     thirdArr.forEach(function(i){
-         thirdElement.innerHTML += i;
+         thirdElement.innerHTML += FindMatchInnerHTML(i);
     });
+ }
+
+ function FindMatchInnerHTML(i)
+ {
+    switch(i){
+        case 1:
+            return "<p>⬛</p>";
+        case 2:
+            return "<p>🟪🟪🟪</p>";
+        case 3:
+            return "<p>🟦🟦🟦🟦🟦</p>";
+        case 4:
+            return "<p>🟩🟩🟩🟩🟩🟩🟩</p>";
+        case 5:
+            return "<p>🟨🟨🟨🟨🟨🟨🟨🟨🟨</p>";
+        case 6:
+            return "<p>🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥</p>";
+    }
+    return;
  }
