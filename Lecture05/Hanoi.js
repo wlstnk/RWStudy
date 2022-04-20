@@ -1,3 +1,4 @@
+var startSize=4; //limit 6
 
 var firstArr = [];
 var secondArr = [];
@@ -7,54 +8,78 @@ var save;
 var savePosition;
 var bisSaved = false;
 var bisInit = false;
-function OnClickFirst(Arr,Position)
-{
-    console.log(savePosition,Position);
-    if(save)
-    {
-        if(Arr[Arr.length - 1] < save)
-        {
-            alert("더 작은 원반 위에 큰 원반을 올릴 수 없습니다.");
-            savePosition.push(save);
-            DrawScreen();
-            save = null;
+var bisClear = false;
+var bclickOnce = false;
+var startLength;
 
+function OnClickDiv(Arr,Position)
+{
+    // console.log(savePosition,Position);
+    if(!bisClear)
+    {
+        if(save)
+        {
+            if(Arr[Arr.length - 1] < save)
+            {
+                alert("더 작은 원반 위에 큰 원반을 올릴 수 없습니다.");
+                savePosition.push(save);
+                DrawScreen();
+                save = null;
+            }
+            else
+            {
+                Arr.push(save);
+                DrawScreen();
+                save = null;
+                ClearCheck();
+            }
+        }
+        else if(bisInit==false)
+        {
+            alert("초기화를 하지 않았습니다.");
         }
         else
         {
-            Arr.push(save);
+            savePosition = Arr;
+            save=Arr.pop();
             DrawScreen();
-            save = null;
         }
     }
-    else if(bisInit==false)
-    {
-        alert("초기화를 하지 않았습니다.");
-    }
-    else
-    {
-        savePosition = Arr;
-        save=Arr.pop();
-        DrawScreen();
-    }
 }
- var bclickOnce = false;
+
+ function ClearCheck()
+ {
+    if(thirdArr.length == startLength)
+    {
+        bisClear = true;
+        const clearTextelement = document.getElementById("clearText");
+        clearTextelement.innerHTML = "클리어!";
+    }
+ }
+ function FirstArrInit(value)
+ {
+    for(var i=value;i>=1;i--)
+    {
+        console.log(value);
+        firstArr.push(i);
+        startLength += 1;
+    }
+ }
  function Init()
 {
     bisInit = true;
     save = null;
     savePosition = null;
     bisSaved = false;
+    bisClear = false;
+    startLength = 0;
+    const clearTextelement = document.getElementById("clearText");
+    clearTextelement.innerHTML = "　";
     
     firstArr = [];
     secondArr = [];
     thirdArr = [];
-    firstArr.push(6);
-    firstArr.push(5);
-    firstArr.push(4);
-    firstArr.push(3);
-    firstArr.push(2);
-    firstArr.push(1);
+    FirstArrInit(startSize);
 
     const element = document.querySelector(".first");
     DrawScreen();
@@ -62,9 +87,9 @@ function OnClickFirst(Arr,Position)
 
  function DrawScreen()
  {
-    const firstElement = document.querySelector(".first");
-    const secondElement = document.querySelector(".second");
-    const thirdElement = document.querySelector(".third");
+    const firstElement = document.getElementById("first");
+    const secondElement = document.getElementById("second");
+    const thirdElement = document.getElementById("third");
 
     firstElement.innerHTML="first";
     firstArr.forEach(function(i){

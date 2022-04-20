@@ -1,7 +1,7 @@
 .parent {
     font-size:2px;
   }
-.first {
+#first {
     width:180px;
     height:300px; 
     float:left; 
@@ -13,7 +13,7 @@
     padding:5px;
   }
   
-.second {
+#second {
     width:180px;
     height:300px; 
     float:left; 
@@ -24,7 +24,7 @@
     line-height:10em;
     padding:5px;
   }
-.third {
+#third {
     width:180px;
     height:300px; 
     float:left; 

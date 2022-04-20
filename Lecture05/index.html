@@ -10,21 +10,22 @@
 </head>
 <body>
     <p>하노이의 탑</p>
-
+    <div id ="clearText">
+        　
+    </div>
     <form id="form_box"method="get" action="form-action.html">
         <input id="btn_reset" type="button" value="초기화" onclick="Init();"  >
     </form>
-
     <div class="parent">
-        <div class ="first" onclick="OnClickFirst(firstArr,1);">
+        <div id ="first" onclick="OnClickDiv(firstArr,1);">
             first
         </div>
         
-        <div class ="second" onclick="OnClickFirst(secondArr,2);">
+        <div id ="second" onclick="OnClickDiv(secondArr,2);">
             second
         </div>
 
-        <div class ="third" onclick="OnClickFirst(thirdArr,3);">
+        <div id ="third" onclick="OnClickDiv(thirdArr,3);">
             third
         </div>
     </div>
